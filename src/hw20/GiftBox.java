@@ -68,7 +68,23 @@ public class GiftBox implements BoxOfSweets{
 				iterator.remove();
 			}
 		} else {
-			System.out.println("Вес коробки уже меньше целевого веса.");
+			System.out.println("Вес коробки уже меньше целевого веса");
+			System.out.println("----------------------");
+		}
+	}
+
+	@Override
+	public void optimizePrice(double targetPrice) {
+		double currentPrice = getTotalPrice();
+		if (currentPrice > targetPrice) {
+			Iterator<Sweet> iterator = sweets.iterator();
+			while (iterator.hasNext() && currentPrice > targetPrice) {
+				Sweet sweet = iterator.next();
+				currentPrice -= sweet.getPrice();
+				iterator.remove();
+			}
+		} else {
+			System.out.println("Цена коробки уже меньше целевой цены");
 			System.out.println("----------------------");
 		}
 	}
