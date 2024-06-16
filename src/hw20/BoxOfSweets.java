@@ -9,5 +9,6 @@ public interface BoxOfSweets {
 	double getTotalPrice();
 	void displayAllSweets();
 	void optimizeWeight(double targetWeight);
+
 	void optimizePrice(double targetPrice);
 }

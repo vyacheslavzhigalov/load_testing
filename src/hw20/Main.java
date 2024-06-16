@@ -116,30 +116,22 @@ public class Main {
 		giftBox.addSweet(caramel);
 		giftBox.addSweet(truffle);
 
-		// Показать все сладости
 		giftBox.displayAllSweets();
 
-		// Показать общий вес коробки
 		double totalWeight = giftBox.getTotalWeight();
 		System.out.println("Общий вес коробки: " + totalWeight + " г");
 
-		// Показать общую цену коробки
 		double totalPrice = giftBox.getTotalPrice();
 		System.out.println("Общая цена коробки: " + totalPrice + " руб");
 
-		// Удалить последний элемент-сладость
 		giftBox.removeLastSweet();
 
-		// Удалить сладость по индексу
 		giftBox.removeSweet(caramel.getUniqueParameter());
 
-		//  Показать коробку сладостей
 		giftBox.displayAllSweets();
 
-		// Оптимизация коробки по цене, цена коробки меньше целевой цены
 		giftBox.optimizePrice(1400);
 
-		// Оптимизация коробки по весу, вес коробки меньше целевого веса
 		giftBox.optimizeWeight(990);
 	}
 }

@@ -84,7 +84,7 @@ public class GiftBox implements BoxOfSweets{
 				iterator.remove();
 			}
 		} else {
-			System.out.println("Цена коробки уже меньше целевой цены");
+			System.out.println("Цена коробки меньше целевой цены");
 			System.out.println("----------------------");
 		}
 	}
