@@ -10,5 +10,5 @@ public interface BoxOfSweets {
 	void displayAllSweets();
 	void optimizeWeight(double targetWeight);
 
-	void optimizePrice(double targetPrice);
+	void optimizePrice(double targetWeight);
 }

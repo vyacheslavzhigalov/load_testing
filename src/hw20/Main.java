@@ -58,7 +58,7 @@ public class Main {
 			}
 		};
 
-		Sweet truffle = new Sweet("Трюфель", 430, 470, 3) {
+		Sweet truffle = new Sweet("Трюфель", 150, 470, 3) {
 			@Override
 			public String getName() {
 				return super.getName();
@@ -84,7 +84,7 @@ public class Main {
 				super.display();
 			}
 		};
-		Sweet caramel = new Sweet("Карамель", 280, 420, 4) {
+		Sweet caramel = new Sweet("Карамель", 150, 420, 4) {
 			@Override
 			public String getName() {
 				return super.getName();
@@ -111,10 +111,10 @@ public class Main {
 			}
 		};
 
-		giftBox.addSweet(candy);
-		giftBox.addSweet(chocolate);
 		giftBox.addSweet(caramel);
 		giftBox.addSweet(truffle);
+		giftBox.addSweet(candy);
+		giftBox.addSweet(chocolate);
 
 		giftBox.displayAllSweets();
 
@@ -130,8 +130,10 @@ public class Main {
 
 		giftBox.displayAllSweets();
 
-		giftBox.optimizePrice(1400);
+		giftBox.optimizeWeight(100);
+		giftBox.displayAllSweets();
 
-		giftBox.optimizeWeight(990);
+		giftBox.optimizePrice(100);
+		giftBox.displayAllSweets();
 	}
 }

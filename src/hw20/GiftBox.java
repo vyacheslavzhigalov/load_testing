@@ -1,12 +1,13 @@
 package hw20;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class GiftBox implements BoxOfSweets{
+public class GiftBox implements BoxOfSweets {
 
 	private List<Sweet> sweets = new ArrayList<>();
+
+	private List<Double> listPrices = new ArrayList<>();
 
 	@Override
 	public void addSweet(Sweet sweet) {
@@ -62,30 +63,40 @@ public class GiftBox implements BoxOfSweets{
 		double currentWeight = getTotalWeight();
 		if (currentWeight > targetWeight) {
 			Iterator<Sweet> iterator = sweets.iterator();
-			while (iterator.hasNext() && currentWeight > targetWeight) {
+			while (iterator.hasNext()) {
 				Sweet sweet = iterator.next();
-				currentWeight -= sweet.getWeight();
-				iterator.remove();
+				if (sweet.weight == targetWeight) {
+					iterator.remove();
+				}
 			}
 		} else {
-			System.out.println("Вес коробки уже меньше целевого веса");
+			System.out.println("Вес коробки равен или меньше целевого веса");
 			System.out.println("----------------------");
 		}
 	}
 
 	@Override
-	public void optimizePrice(double targetPrice) {
-		double currentPrice = getTotalPrice();
-		if (currentPrice > targetPrice) {
+	public void optimizePrice(double targetWeight) {
+		double currentWeight = getTotalWeight();
+		List<Sweet> sweetOneWithTargetWeight = new ArrayList<>();
+		if (currentWeight > targetWeight) {
+			sweetOneWithTargetWeight = sweets.stream()
+					.filter(s -> s.getWeight() == targetWeight)
+					.collect(Collectors.toList());
+		}
+		sweetOneWithTargetWeight.sort(Comparator.comparing(Sweet::getPrice));
+		if (currentWeight > targetWeight) {
 			Iterator<Sweet> iterator = sweets.iterator();
-			while (iterator.hasNext() && currentPrice > targetPrice) {
+			while (iterator.hasNext()) {
 				Sweet sweet = iterator.next();
-				currentPrice -= sweet.getPrice();
+				if (sweet.weight == targetWeight && sweet.price == sweetOneWithTargetWeight.get(0).price)
 				iterator.remove();
 			}
 		} else {
-			System.out.println("Цена коробки меньше целевой цены");
+			System.out.println("Вес коробки равен или меньше целевого веса");
 			System.out.println("----------------------");
 		}
 	}
 }
+
+
